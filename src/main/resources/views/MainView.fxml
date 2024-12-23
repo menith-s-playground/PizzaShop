@@ -8,12 +8,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="544.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.MainViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.MainViewController">
    <children>
+      <ImageView fitHeight="673.0" fitWidth="1005.0" layoutX="-5.0" opacity="0.97" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/menu.jpg" />
+         </image>
+      </ImageView>
       <!-- Header -->
-      <AnchorPane layoutX="94.0" layoutY="10.0" prefHeight="88.0" prefWidth="874.0">
+      <AnchorPane layoutX="50.0" layoutY="10.0" prefHeight="88.0" prefWidth="900.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-183.0" layoutY="9.0" prefHeight="71.0" prefWidth="902.0" text="Pizza Shop - Order Your Way!" textAlignment="CENTER" AnchorPane.leftAnchor="-183.0" AnchorPane.rightAnchor="-85.0" AnchorPane.topAnchor="9.0">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="0.0" layoutY="10.0" prefHeight="71.0" prefWidth="900.0" scaleShape="false" style="-fx-background-color: #58D68D;" text="Pizza Shop - Order Your Way!" textFill="#edeeed">
                <font>
                   <Font name="Arial" size="48.0" />
                </font>
@@ -22,41 +27,53 @@
       </AnchorPane>
 
       <!-- Main Menu -->
-      <VBox alignment="CENTER" layoutX="14.0" layoutY="141.0" spacing="25.0">
+      <VBox alignment="CENTER" layoutX="34.0" layoutY="120.0" spacing="20.0">
          <children>
-            <Button fx:id="btnNewOrder" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnNewOrderOnAction" text="Create New Order">
+            <Button fx:id="btnNewOrder" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnNewOrderOnAction" style="-fx-background-color: #F08080;" text="Create New Order">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnViewFavorites" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnViewFavoritesOnAction" text="View Favorite Pizzas">
+            <Button fx:id="btnViewFavorites" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnViewFavoritesOnAction" style="-fx-background-color: #F08080;" text="View Favorite Pizzas">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnTrackOrder" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnTrackOrderOnAction" text="Track My Order">
+            <Button fx:id="btnTrackOrder" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnTrackOrderOnAction" style="-fx-background-color: #F08080;" text="Track My Order">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnPromotions" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPromotionsOnAction" text="View Seasonal Specials">
+            <Button fx:id="btnPromotions" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPromotionsOnAction" style="-fx-background-color: #F08080;" text="View Seasonal Specials">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnLoyaltyPoints" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoyaltyPointsOnAction" text="Loyalty Program">
+            <Button fx:id="btnLoyaltyPoints" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoyaltyPointsOnAction" style="-fx-background-color: #F08080;" text="Loyalty Program">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnFeedback" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFeedbackOnAction" text="Provide Feedback">
+            <Button fx:id="btnFeedback" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFeedbackOnAction" style="-fx-background-color: #F08080;" text="Provide Feedback">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUserProfile" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUserProfileOnAction" style="-fx-background-color: #F08080;" text="User Profile">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPayment" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPaymentOnAction" style="-fx-background-color: #F08080;" text="Payment Options">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <ImageView fx:id="imgPizza" fitHeight="410.0" fitWidth="710.0" layoutX="267.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="23.0">
+
+      <!-- Pizza Image -->
+      <ImageView fx:id="imgPizza" fitHeight="443.0" fitWidth="712.0" layoutX="281.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../imgs/pizza.png" />
       </ImageView>
    </children>

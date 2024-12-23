@@ -58,4 +58,9 @@ public class MainViewController {
 
     }
 
+    public void btnPaymentOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnUserProfileOnAction(ActionEvent actionEvent) {
+    }
 }
