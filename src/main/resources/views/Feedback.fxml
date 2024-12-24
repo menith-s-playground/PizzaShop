@@ -6,29 +6,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="599.0" prefWidth="681.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.ProvideFeedbackController" style="-fx-background-color: #f9f9f9; -fx-font-family: 'Arial';">
+<AnchorPane prefHeight="599.0" prefWidth="681.0" style="-fx-background-color: #f9f9f9; -fx-font-family: 'Arial';" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.ProvideFeedbackController">
     <children>
         <Pane layoutX="24.0" layoutY="89.0" prefHeight="489.0" prefWidth="634.0" style="-fx-background-color: #ffffff; -fx-border-color: #bdc3c7; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-background-radius: 5px;">
             <children>
                 <TextField fx:id="orderIDField" layoutX="212.0" layoutY="34.0" prefHeight="25.0" prefWidth="405.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #bdc3c7; -fx-border-width: 2px; -fx-padding: 5px;" />
-                <Label layoutX="26.0" layoutY="33.0" text="Order ID" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
-                <Label layoutX="26.0" layoutY="99.0" text="Rating" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+                <Label layoutX="26.0" layoutY="33.0" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Order ID" />
+                <Label layoutX="26.0" layoutY="99.0" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Rating" />
                 <HBox layoutX="245.0" layoutY="87.0" spacing="10.0">
                     <children>
-                        <Button fx:id="star1" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" onMouseEntered="#hoverStar" onMouseExited="#exitStar" />
-                        <Button fx:id="star2" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" onMouseEntered="#hoverStar" onMouseExited="#exitStar" />
-                        <Button fx:id="star3" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" onMouseEntered="#hoverStar" onMouseExited="#exitStar" />
-                        <Button fx:id="star4" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" onMouseEntered="#hoverStar" onMouseExited="#exitStar" />
-                        <Button fx:id="star5" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" onMouseEntered="#hoverStar" onMouseExited="#exitStar" />
+                        <Button fx:id="star1" onMouseEntered="#hoverStar" onMouseExited="#exitStar" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" />
+                        <Button fx:id="star2" onMouseEntered="#hoverStar" onMouseExited="#exitStar" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" />
+                        <Button fx:id="star3" onMouseEntered="#hoverStar" onMouseExited="#exitStar" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" />
+                        <Button fx:id="star4" onMouseEntered="#hoverStar" onMouseExited="#exitStar" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" />
+                        <Button fx:id="star5" onMouseEntered="#hoverStar" onMouseExited="#exitStar" style="-fx-font-size: 24px; -fx-text-fill: #ffcc00; -fx-background-color: transparent; -fx-border-color: transparent;" text="★" />
                     </children>
                 </HBox>
-                <Label layoutX="26.0" layoutY="165.0" text="Comments" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" />
+                <Label layoutX="26.0" layoutY="165.0" style="-fx-font-size: 18px; -fx-text-fill: #34495e; -fx-font-weight: bold;" text="Comments" />
                 <TextField fx:id="commentsField" layoutX="212.0" layoutY="165.0" prefHeight="197.0" prefWidth="405.0" style="-fx-background-radius: 5px; -fx-border-radius: 5px; -fx-border-color: #bdc3c7; -fx-border-width: 2px; -fx-padding: 5px;" />
-                <Button fx:id="submitButton" layoutX="277.0" layoutY="411.0" mnemonicParsing="false" text="Submit" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 4);" onMouseEntered="#hoverButton" onMouseExited="#exitButton" />
+                <Button fx:id="submitButton" layoutX="277.0" layoutY="411.0" mnemonicParsing="false" onMouseEntered="#hoverButton" onMouseExited="#exitButton" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-border-radius: 20px; -fx-background-radius: 20px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 4);" text="Submit" />
             </children>
         </Pane>
-        <Label layoutX="182.0" layoutY="24.0" text="Provide Feedback" style="-fx-font-size: 36px; -fx-text-fill: #2c3e50; -fx-font-weight: bold; -fx-padding: 10px;" />
+        <Label layoutX="182.0" layoutY="24.0" style="-fx-font-size: 36px; -fx-text-fill: #2c3e50; -fx-font-weight: bold; -fx-padding: 10px;" text="Provide Feedback" />
     </children>
 </AnchorPane>
