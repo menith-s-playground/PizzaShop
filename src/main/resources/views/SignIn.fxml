@@ -53,18 +53,6 @@
                     </font>
                 </PasswordField>
 
-                <!-- Sign-Up Section -->
-                <Label layoutX="14.0" layoutY="314.0" style="-fx-background-color: brown;" text="Don't have an account?" textFill="#f5e8e8">
-                    <font>
-                        <Font size="17.0" />
-                    </font>
-                </Label>
-                <Button fx:id="btnSingUp" layoutX="226.0" layoutY="314.0" mnemonicParsing="false" onAction="#btnSingUpOnAction" style="-fx-background-color: #04AA6D;" text="Sign Up">
-                    <font>
-                        <Font size="14.0" />
-                    </font>
-                </Button>
-
                 <!-- Welcome Message -->
                 <Label layoutX="69.0" layoutY="21.0" style="-fx-background-color: skyblue;" text="Welcome Back" textAlignment="CENTER" textFill="WHITE">
                     <font>

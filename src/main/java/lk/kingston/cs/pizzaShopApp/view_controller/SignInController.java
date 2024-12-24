@@ -80,21 +80,5 @@ public class SignInController {
     }
 
 
-    @FXML
-    public void btnSingUpOnAction() {
-        Stage singUpStage = new Stage();
-        singUpStage.setResizable(false);
-        singUpStage.setTitle("Sign Up");
-        singUpStage.centerOnScreen();
-        try {
-            singUpStage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/views/SingUp.fxml"))));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        singUpStage.show();
-        Stage currentStage = (Stage) btnSignIn.getScene().getWindow();
-        currentStage.close();
-    }
-
 }
 
