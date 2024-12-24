@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="605.0" prefWidth="887.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.MenuViewController">
-   <ImageView fitHeight="630.0" fitWidth="914.0" layoutX="-27.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
-      <image>
-         <Image url="@../imgs/menu.jpg" />
-      </image>
-   </ImageView>
+    <ImageView fitHeight="630.0" fitWidth="914.0" layoutX="-27.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
+        <image>
+            <Image url="@../imgs/menu.jpg" />
+        </image>
+    </ImageView>
 
     <VBox alignment="TOP_CENTER" layoutX="18.0" layoutY="6.0" prefHeight="413.0" prefWidth="535.0" spacing="20" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="6.0">
         <children>
@@ -27,13 +27,13 @@
                     <VBox alignment="CENTER" spacing="10">
                         <children>
                             <ImageView fx:id="margheritaImageView" fitHeight="95.0" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../imgs/menu/Margherita.jpg" />
-                        </image></ImageView>
+                                <image>
+                                    <Image url="@../imgs/menu/Margherita.jpg" />
+                                </image></ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Margherita" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 2,500.00" />
                             <Button fx:id="btnAddMargheritaButton" onAction="#btnAddMargheritaButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
-                     <Button fx:id="btnMargheritFav" layoutX="39.0" layoutY="227.0" onAction="#btnMargheritFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
+                            <Button fx:id="btnMargheritFav" layoutX="39.0" layoutY="227.0" onAction="#btnMargheritFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
 
@@ -41,13 +41,13 @@
                     <VBox alignment="CENTER" spacing="10">
                         <children>
                             <ImageView fx:id="pepperoniImageView" fitHeight="112.0" fitWidth="150" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../imgs/menu/Pepperoni.jpg" />
-                        </image></ImageView>
+                                <image>
+                                    <Image url="@../imgs/menu/Pepperoni.jpg" />
+                                </image></ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pepperoni" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 3,000.00" />
                             <Button fx:id="btnAddPepperoniButton" onAction="#btnAddPepperoniButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
-                     <Button fx:id="btnPepperoniFav" onAction="#btnPepperoniFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
+                            <Button fx:id="btnPepperoniFav" onAction="#btnPepperoniFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
 
@@ -55,57 +55,68 @@
                     <VBox alignment="CENTER" spacing="10">
                         <children>
                             <ImageView fx:id="bbqChickenImageView" fitHeight="110.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../imgs/menu/BBQ-Chicken-Pizza.jpg" />
-                        </image></ImageView>
+                                <image>
+                                    <Image url="@../imgs/menu/BBQ-Chicken-Pizza.jpg" />
+                                </image></ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="BBQ Chicken" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 3,500.00" />
                             <Button fx:id="btnAddBBQChickenButton" onAction="#btnAddBBQChickenButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
-                     <Button fx:id="btnBBQFav" onAction="#btnBBQFavOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
+                            <Button fx:id="btnBBQFav" onAction="#btnBBQFavOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
                 </children>
             </HBox>
 
             <Button fx:id="viewCartButton" onAction="#viewCartButtonOnAction" style="-fx-font-size: 16px; -fx-background-color: #e74c3c; -fx-text-fill: white;" text="View Cart">
-            <VBox.margin>
-               <Insets bottom="10.0" />
-            </VBox.margin></Button>
+                <VBox.margin>
+                    <Insets bottom="10.0" />
+                </VBox.margin></Button>
         </children>
     </VBox>
-   <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="402.0" prefHeight="186.0" prefWidth="849.0">
-      <children>
-         <Label text="Customize Your Pizza" textFill="#8c00ff">
-            <font>
-               <Font size="23.0" />
-            </font>
-         </Label>
-         <HBox alignment="CENTER" prefHeight="153.0" prefWidth="849.0">
-            <children>
-               <VBox alignment="CENTER" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+    <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="402.0" prefHeight="186.0" prefWidth="849.0">
+        <children>
+            <Label text="Customize Your Pizza" textFill="#8c00ff">
+                <font>
+                    <Font size="23.0" />
+                </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="153.0" prefWidth="849.0">
+                <children>
+                    <VBox alignment="CENTER" layoutX="355.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+                        <children>
+                            <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../imgs/menu/source.jpg" />
+                                </image>
+                            </ImageView>
+                            <Label style="-fx-text-fill: #7f8c8d;" text="Add Price: LKR 400.00" />
+                            <Button fx:id="btnmoreChili" mnemonicParsing="false" onAction="#btnmoreChiliOnACtion" style="-fx-background-color: #ADD8E6;" text="More Sourcce" />
+                        </children>
+                    </VBox>
+               <VBox alignment="CENTER" layoutX="276.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
                   <children>
                      <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../imgs/menu/swiss-cheese-header_2.jpg" />
+                           <Image url="@../imgs/menu/Margherita.jpg" />
                         </image>
                      </ImageView>
-                     <Label style="-fx-text-fill: #7f8c8d;" text="Add Price: LKR 500.00" />
-                     <Button fx:id="btnMoreCheese" mnemonicParsing="false" onAction="#btnMoreCheeseOnAction" style="-fx-background-color: #ADD8E6;" text="More Cheese" />
+                     <Label style="-fx-text-fill: #7f8c8d;" text="Crust: LKR 300.00" />
+                     <Button fx:id="btnMoreCheese1" mnemonicParsing="false" onAction="#btnMoreCheeseOnAction" style="-fx-background-color: #ADD8E6;" text="Add Crust" />
                   </children>
                </VBox>
-               <VBox alignment="CENTER" layoutX="355.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+               <VBox alignment="CENTER" layoutX="514.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
                   <children>
                      <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                         <image>
-                           <Image url="@../imgs/menu/chili-peppers-e1535056335221.jpeg" />
+                           <Image url="@../imgs/menu/topping.jpg" />
                         </image>
                      </ImageView>
-                     <Label style="-fx-text-fill: #7f8c8d;" text="Add Price: LKR 400.00" />
-                     <Button fx:id="btnmoreChili" mnemonicParsing="false" onAction="#btnmoreChiliOnACtion" style="-fx-background-color: #ADD8E6;" text="More Chili" />
+                     <Label style="-fx-text-fill: #7f8c8d;" text="Toppings: LKR 500.00" />
+                     <Button fx:id="btnMoreCheese11" mnemonicParsing="false" onAction="#btnMoreCheeseOnAction" style="-fx-background-color: #ADD8E6;" text="Add Toppings" />
                   </children>
                </VBox>
-            </children>
-         </HBox>
-      </children>
-   </VBox>
+                </children>
+            </HBox>
+        </children>
+    </VBox>
 </AnchorPane>
