@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,17 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="605.0" prefWidth="887.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.MenuViewController">
-    <ImageView fitHeight="630.0" fitWidth="914.0" layoutX="-27.0" opacity="0.13" pickOnBounds="true" preserveRatio="true">
-        <image>
-            <Image url="@../imgs/menu.jpg" />
-        </image>
-    </ImageView>
+<AnchorPane prefHeight="889.0" prefWidth="941.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.MenuViewController">
 
-    <VBox alignment="TOP_CENTER" layoutX="18.0" layoutY="6.0" prefHeight="413.0" prefWidth="535.0" spacing="20" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="6.0">
+    <VBox alignment="TOP_CENTER" layoutX="18.0" layoutY="17.0" prefHeight="365.0" prefWidth="906.0" spacing="20" style="-fx-border-color: yellow;" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="17.0">
         <children>
-            <Label style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #d35400;" text="Pizza Menu" />
-
+            <Label prefHeight="49.0" prefWidth="186.0" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-background-color: red;" text="   Menu" textFill="WHITE" />
             <HBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
                 <children>
                     <!-- First Pizza Item -->
@@ -29,10 +25,10 @@
                             <ImageView fx:id="margheritaImageView" fitHeight="95.0" fitWidth="150" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@../imgs/menu/Margherita.jpg" />
-                                </image></ImageView>
+                                </image>
+                            </ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Margherita" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 2,500.00" />
-                            <Button fx:id="btnAddMargheritaButton" onAction="#btnAddMargheritaButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
                             <Button fx:id="btnMargheritFav" layoutX="39.0" layoutY="227.0" onAction="#btnMargheritFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
@@ -46,13 +42,12 @@
                                 </image></ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pepperoni" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 3,000.00" />
-                            <Button fx:id="btnAddPepperoniButton" onAction="#btnAddPepperoniButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
                             <Button fx:id="btnPepperoniFav" onAction="#btnPepperoniFavOnAction" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
 
                     <!-- Third Pizza Item -->
-                    <VBox alignment="CENTER" spacing="10">
+                    <VBox alignment="CENTER" prefHeight="180.0" prefWidth="118.0" spacing="10">
                         <children>
                             <ImageView fx:id="bbqChickenImageView" fitHeight="110.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
@@ -60,63 +55,135 @@
                                 </image></ImageView>
                             <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="BBQ Chicken" />
                             <Label style="-fx-text-fill: #7f8c8d;" text="Price: LKR 3,500.00" />
-                            <Button fx:id="btnAddBBQChickenButton" onAction="#btnAddBBQChickenButtonOnAction" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Add to Cart" />
-                            <Button fx:id="btnBBQFav" onAction="#btnBBQFavOnAction" prefHeight="22.0" prefWidth="118.0" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
+                            <Button fx:id="btnBBQFav" onAction="#btnBBQFavOnAction" prefHeight="7.0" prefWidth="118.0" style="-fx-background-color: #FF8A80; -fx-text-fill: white;" text="Add to Favorite" />
                         </children>
                     </VBox>
                 </children>
             </HBox>
-
-            <Button fx:id="viewCartButton" onAction="#viewCartButtonOnAction" style="-fx-font-size: 16px; -fx-background-color: #e74c3c; -fx-text-fill: white;" text="View Cart">
-                <VBox.margin>
-                    <Insets bottom="10.0" />
-                </VBox.margin></Button>
         </children>
     </VBox>
-    <VBox alignment="TOP_CENTER" layoutX="5.0" layoutY="402.0" prefHeight="186.0" prefWidth="849.0">
+
+    <!-- Pizza Customization Section -->
+    <VBox alignment="TOP_CENTER" layoutX="16.0" layoutY="427.0" prefHeight="339.0" prefWidth="912.0" style="-fx-border-color: yellow;">
         <children>
-            <Label text="Customize Your Pizza" textFill="#8c00ff">
+            <Label prefHeight="110.0" prefWidth="217.0" text="Pizza Customization" textFill="#170c22">
                 <font>
                     <Font size="23.0" />
                 </font>
             </Label>
-            <HBox alignment="CENTER" prefHeight="153.0" prefWidth="849.0">
+            <HBox alignment="CENTER" prefHeight="163.0" prefWidth="903.0">
                 <children>
                     <VBox alignment="CENTER" layoutX="355.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+                        <children>
+                            <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../imgs/menu/chili-peppers-e1535056335221.jpeg" />
+                                </image>
+                            </ImageView>
+                            <Label style="-fx-text-fill: #7f8c8d;" text="  Crusts: LKR 400.00" />
+                            <ComboBox fx:id="crustComboBox" prefHeight="25.0" prefWidth="124.0" promptText="Add Crusts" />
+                        </children>
+                    </VBox>
+                    <VBox alignment="CENTER" layoutX="276.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
                         <children>
                             <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
                                 <image>
                                     <Image url="@../imgs/menu/source.jpg" />
                                 </image>
                             </ImageView>
-                            <Label style="-fx-text-fill: #7f8c8d;" text="Add Price: LKR 400.00" />
-                            <Button fx:id="btnmoreChili" mnemonicParsing="false" onAction="#btnmoreChiliOnACtion" style="-fx-background-color: #ADD8E6;" text="More Sourcce" />
+                            <Label style="-fx-text-fill: #7f8c8d;" text="Sauces: LKR 300.00" />
+                            <ComboBox fx:id="sauceComboBox" prefHeight="25.0" prefWidth="124.0" promptText="Add Sauces" />
                         </children>
                     </VBox>
-               <VBox alignment="CENTER" layoutX="276.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
-                  <children>
-                     <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../imgs/menu/Margherita.jpg" />
-                        </image>
-                     </ImageView>
-                     <Label style="-fx-text-fill: #7f8c8d;" text="Crust: LKR 300.00" />
-                     <Button fx:id="btnMoreCheese1" mnemonicParsing="false" onAction="#btnMoreCheeseOnAction" style="-fx-background-color: #ADD8E6;" text="Add Crust" />
-                  </children>
-               </VBox>
-               <VBox alignment="CENTER" layoutX="514.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
-                  <children>
-                     <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../imgs/menu/topping.jpg" />
-                        </image>
-                     </ImageView>
-                     <Label style="-fx-text-fill: #7f8c8d;" text="Toppings: LKR 500.00" />
-                     <Button fx:id="btnMoreCheese11" mnemonicParsing="false" onAction="#btnMoreCheeseOnAction" style="-fx-background-color: #ADD8E6;" text="Add Toppings" />
-                  </children>
-               </VBox>
+                    <VBox alignment="CENTER" layoutX="514.0" layoutY="10.0" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+                        <children>
+                            <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../imgs/pizza.png" />
+                                </image>
+                            </ImageView>
+                            <Label style="-fx-text-fill: #7f8c8d;" text="Toppings: LKR 500.00" />
+                            <ComboBox fx:id="toppingComboBox" prefHeight="25.0" prefWidth="124.0" promptText="Add Toppings" />
+                        </children>
+                    </VBox>
+                    <VBox alignment="CENTER" prefHeight="153.0" prefWidth="159.0" spacing="10.0">
+                        <children>
+                            <ImageView fitHeight="85.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../imgs/menu.jpg" />
+                                </image>
+                            </ImageView>
+                            <Label style="-fx-text-fill: #7f8c8d;" text="Cheese: LKR 700.00" />
+                            <ComboBox fx:id="cheeseComboBox" prefHeight="25.0" prefWidth="124.0" promptText="Add Cheese" />
+                        </children>
+                    </VBox>
                 </children>
             </HBox>
         </children>
     </VBox>
+
+    <!-- Ordering Process Section -->
+    <VBox alignment="TOP_CENTER" layoutX="16.0" layoutY="760.0" prefHeight="200.0" prefWidth="912.0" style="-fx-border-color: yellow;">
+        <children>
+            <!-- Label for Ordering Process -->
+            <Label prefHeight="40.0" prefWidth="217.0" text="Ordering Process" textFill="#170c22">
+                <font>
+                    <Font size="23.0" />
+                </font>
+            </Label>
+
+            <!-- Quantity Field for Custom Pizza -->
+            <HBox alignment="CENTER" spacing="10.0" style="-fx-padding: 10;">
+                <children>
+                    <Label text="Quantity:" />
+                    <TextField fx:id="quantityTextField" prefHeight="35.0" prefWidth="60.0" promptText="Enter Quantity" />
+                </children>
+            </HBox>
+
+            <!-- Review Order Section -->
+            <VBox alignment="CENTER" spacing="10.0" style="-fx-padding: 10;">
+                <Label text="Review Your Order" />
+                <Label fx:id="orderReviewLabel" text="Your order will appear here" />
+                <Button fx:id="btnReviewOrder" onAction="#reviewOrderAction" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Review Order" />
+            </VBox>
+        </children>
+    </VBox>
+
+    <!-- Pickup/Delivery Section -->
+    <VBox alignment="TOP_CENTER" layoutX="16.0" layoutY="950.0" prefHeight="150.0" prefWidth="912.0" style="-fx-border-color: yellow;">
+        <children>
+            <!-- Label for Pickup/Delivery -->
+            <Label prefHeight="30.0" prefWidth="217.0" text="Select Delivery or Pickup" textFill="#170c22">
+                <font>
+                    <Font size="18.0" />
+                </font>
+            </Label>
+
+            <!-- RadioButtons for Pickup/Delivery Option -->
+            <HBox alignment="CENTER" spacing="20.0">
+                <children>
+                    <RadioButton fx:id="pickupRadioButton" selected="true" text="Pickup" />
+                    <RadioButton fx:id="deliveryRadioButton" text="Delivery" />
+                </children>
+            </HBox>
+
+            <!-- Address Field for Delivery -->
+            <HBox fx:id="deliveryAddressBox" alignment="CENTER" spacing="10.0" visible="false">
+                <children>
+                    <Label text="Enter Delivery Address:" />
+                    <TextField fx:id="deliveryAddressField" prefHeight="35.0" prefWidth="300.0" promptText="Enter address for delivery" />
+                </children>
+            </HBox>
+
+            <!-- Button to calculate delivery estimate -->
+            <HBox fx:id="deliveryEstimateBox" alignment="CENTER" spacing="10.0" visible="false">
+                <children>
+                    <Button fx:id="btnCalculateEstimate" onAction="#calculateDeliveryEstimateOnAction" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Get Delivery Estimate" />
+                    <Label fx:id="deliveryEstimateLabel" text="Delivery Estimate: Not Calculated" />
+                </children>
+            </HBox>
+
+        </children>
+    </VBox>
+
 </AnchorPane>

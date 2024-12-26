@@ -64,7 +64,7 @@ public class MainViewController {
             Scene scene = new Scene(fxmlLoader.load());
             newOrderStage.setScene(scene);
         } catch (IOException e) {
-            // Log the exception and show an error dialog
+
             e.printStackTrace();
             showErrorDialog("Failed to load the New Order view. Please try again.");
             return;
@@ -85,6 +85,7 @@ public class MainViewController {
 
     @FXML
     void btnPromotionsOnAction(ActionEvent event) {
+
 
     }
 

@@ -15,7 +15,7 @@ public class AppInitializer extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/SignIn.fxml"));
         primaryStage.setScene(new Scene(loader.load()));
         primaryStage.setResizable(false);
         primaryStage.setTitle("Pizza Shop");

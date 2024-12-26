@@ -27,7 +27,7 @@
       </AnchorPane>
 
       <!-- Main Menu -->
-      <VBox alignment="CENTER" layoutX="34.0" layoutY="120.0" spacing="20.0">
+      <VBox alignment="CENTER" layoutX="28.0" layoutY="149.0" spacing="20.0">
          <children>
             <Button fx:id="btnNewOrder" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnNewOrderOnAction" style="-fx-background-color: #F08080;" text="Create New Order">
                <font>
@@ -49,9 +49,9 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnLoyaltyPoints" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoyaltyPointsOnAction" style="-fx-background-color: #F08080;" text="Loyalty Program">
+            <Button fx:id="btnLoyaltyPoints" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnLoyaltyPointsOnAction" style="-fx-background-color: #F08080;" text="Payment &amp; Loyalty Program">
                <font>
-                  <Font size="18.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
             <Button fx:id="btnFeedback" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnFeedbackOnAction" style="-fx-background-color: #F08080;" text="Provide Feedback">
@@ -64,16 +64,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnPayment" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPaymentOnAction" style="-fx-background-color: #F08080;" text="Payment Options">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children>
       </VBox>
 
       <!-- Pizza Image -->
-      <ImageView fx:id="imgPizza" fitHeight="443.0" fitWidth="712.0" layoutX="281.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgPizza" fitHeight="401.0" fitWidth="702.0" layoutX="291.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../imgs/pizza.png" />
       </ImageView>
    </children>
