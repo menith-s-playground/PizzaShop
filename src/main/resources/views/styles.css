@@ -21,3 +21,24 @@
     -fx-background-color: linear-gradient(to right, #ff7e5f, #ff4500);
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
 }
+
+/* styles.css */
+.header {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff6347; /* Tomato color */
+}
+
+.list-cell {
+    -fx-font-size: 18px;
+    -fx-padding: 10px;
+    -fx-background-color: #f4f4f4;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 2, 2);
+}
+
+.list-cell:hover {
+    -fx-background-color: #ffe6e6; /* Light red */
+}
+

@@ -1,18 +1,19 @@
 package lk.kingston.cs.pizzaShopApp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaOrder {
-    private int orderId;
-    private String pizzaName;
-    private String crust;
-    private String sauce;
-    private String cheese;
-    private List<String> toppings;
-    private int quantity;
-    private String deliveryOption;
-    private String deliveryAddress;
+    private final String orderId;
+    private final String pizzaName;
+    private final String crust;
+    private final String sauce;
+    private final String cheese;
+    private final List<String> toppings;
+    private final int quantity;
+    private final String deliveryOption;
+    private final String deliveryAddress;
+    private final double totalPrice;
+    private final boolean isFavorite; // Add the isFavorite field
 
     private PizzaOrder(Builder builder) {
         this.orderId = builder.orderId;
@@ -24,9 +25,11 @@ public class PizzaOrder {
         this.quantity = builder.quantity;
         this.deliveryOption = builder.deliveryOption;
         this.deliveryAddress = builder.deliveryAddress;
+        this.totalPrice = builder.totalPrice;
+        this.isFavorite = builder.isFavorite; // Set the isFavorite value
     }
 
-    public int getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
@@ -46,8 +49,8 @@ public class PizzaOrder {
         return cheese;
     }
 
-    public String getToppings() {
-        return String.join(", ", toppings);
+    public List<String> getToppings() {
+        return toppings;
     }
 
     public int getQuantity() {
@@ -62,18 +65,34 @@ public class PizzaOrder {
         return deliveryAddress;
     }
 
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Order ID: %s\nPizza: %s\nCrust: %s\nSauce: %s\nCheese: %s\nToppings: %s\nQuantity: %d\nFavorite: %s",
+                orderId, pizzaName, crust, sauce, cheese, String.join(", ", toppings), quantity, isFavorite ? "Yes" : "No");
+    }
+
     public static class Builder {
-        private int orderId;
-        private String pizzaName = "Custom Pizza";
+        private String orderId;
+        private String pizzaName;
         private String crust;
         private String sauce;
         private String cheese;
-        private List<String> toppings = new ArrayList<>();
-        private int quantity = 1;
+        private List<String> toppings;
+        private int quantity;
         private String deliveryOption;
         private String deliveryAddress;
+        private double totalPrice;
+        private boolean isFavorite; // Add the isFavorite field to the builder
 
-        public Builder setOrderId(int orderId) {
+        public Builder setOrderId(String orderId) {
             this.orderId = orderId;
             return this;
         }
@@ -98,6 +117,11 @@ public class PizzaOrder {
             return this;
         }
 
+        public Builder setToppings(List<String> toppings) {
+            this.toppings = toppings;
+            return this;
+        }
+
         public Builder addTopping(String topping) {
             this.toppings.add(topping);
             return this;
@@ -115,6 +139,16 @@ public class PizzaOrder {
 
         public Builder setDeliveryAddress(String deliveryAddress) {
             this.deliveryAddress = deliveryAddress;
+            return this;
+        }
+
+        public Builder setTotalPrice(double totalPrice) {
+            this.totalPrice = totalPrice;
+            return this;
+        }
+
+        public Builder setFavorite(boolean isFavorite) {
+            this.isFavorite = isFavorite; // Set the value for isFavorite
             return this;
         }
 

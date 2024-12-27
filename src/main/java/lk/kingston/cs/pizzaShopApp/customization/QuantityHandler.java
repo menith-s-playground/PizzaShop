@@ -14,11 +14,11 @@ public class QuantityHandler implements CustomizationHandler {
 
     @Override
     public void handleCustomization(PizzaOrder.Builder orderBuilder, PizzaOrderController controller) {
-        int quantity = controller.quantitySpinner.getValue();
-        orderBuilder.setQuantity(quantity);
-
-        if (nextHandler != null) {
-            nextHandler.handleCustomization(orderBuilder, controller);
-        }
+//        int quantity = controller.quantitySpinner.getValue();
+//        orderBuilder.setQuantity(quantity);
+//
+//        if (nextHandler != null) {
+//            nextHandler.handleCustomization(orderBuilder, controller);
+//        }
     }
 }

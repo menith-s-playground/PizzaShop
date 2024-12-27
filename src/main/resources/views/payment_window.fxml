@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Pos?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.PaymentController"
+      spacing="20" alignment="CENTER" style="-fx-background-color: #f4f4f4; -fx-padding: 20px; -fx-border-radius: 10px; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);">
+
+    <TextField fx:id="orderIdField"
+               promptText="Order ID will appear here"
+               editable="false"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #e2e2e2;" />
+
+    <TextField fx:id="pizzaNameField"
+               promptText="Pizza Name will appear here"
+               editable="false"
+               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #e2e2e2;" />
+
+    <TextField fx:id="paymentAmountField"
+               promptText="Total Payment"
+               editable="false"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-background-color: #e2e2e2;" />
+
+    <Button fx:id="submitPaymentButton"
+            text="Submit Payment"
+            style="-fx-font-size: 14px; -fx-background-color: #4caf50; -fx-text-fill: white;"
+            onAction="#submitPayment"/>
+</VBox>

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderTracker {
+
     private final List<OrderObserver> observers = new ArrayList<>();
     private String status;
     private double progress;
@@ -52,4 +53,5 @@ public class OrderTracker {
         this.notification = notification;
         notifyObservers();
     }
+
 }

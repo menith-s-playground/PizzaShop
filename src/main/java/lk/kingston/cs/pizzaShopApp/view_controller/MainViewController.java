@@ -40,7 +40,7 @@ public class MainViewController {
     void btnFeedbackOnAction(ActionEvent event) {
         Stage newOrderStage = new Stage();
         newOrderStage.setResizable(false);
-        newOrderStage.setTitle("New Order");
+        newOrderStage.setTitle("Feedback and Ratings");
         newOrderStage.centerOnScreen();
 
         Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
@@ -63,7 +63,7 @@ public class MainViewController {
     void btnLoyaltyPointsOnAction(ActionEvent event) {
         Stage newOrderStage = new Stage();
         newOrderStage.setResizable(false);
-        newOrderStage.setTitle("New Order");
+        newOrderStage.setTitle("Payment Loyalty Points");
         newOrderStage.centerOnScreen();
 
         Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
@@ -119,7 +119,7 @@ public class MainViewController {
     void btnPromotionsOnAction(ActionEvent event) {
         Stage newOrderStage = new Stage();
         newOrderStage.setResizable(false);
-        newOrderStage.setTitle("New Order");
+        newOrderStage.setTitle("promotions");
         newOrderStage.centerOnScreen();
 
         Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
@@ -143,7 +143,7 @@ public class MainViewController {
     void btnTrackOrderOnAction(ActionEvent event) {
         Stage newOrderStage = new Stage();
         newOrderStage.setResizable(false);
-        newOrderStage.setTitle("New Order");
+        newOrderStage.setTitle("Order Tracking");
         newOrderStage.centerOnScreen();
 
         Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
@@ -165,7 +165,26 @@ public class MainViewController {
 
     @FXML
     void btnViewFavoritesOnAction(ActionEvent event) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("Favorite Pizzas");
+        newOrderStage.centerOnScreen();
 
+        Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/Favorite.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+
+        newOrderStage.show();
     }
 
     public void btnPaymentOnAction(ActionEvent actionEvent) {
@@ -174,7 +193,7 @@ public class MainViewController {
     public void btnUserProfileOnAction(ActionEvent actionEvent) {
         Stage newOrderStage = new Stage();
         newOrderStage.setResizable(false);
-        newOrderStage.setTitle("New Order");
+        newOrderStage.setTitle("User Profile");
         newOrderStage.centerOnScreen();
 
         Window currentStage = ((Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow());

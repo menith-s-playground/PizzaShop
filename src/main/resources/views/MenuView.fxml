@@ -3,52 +3,47 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Spinner?>
-<?import javafx.scene.control.SpinnerValueFactory.IntegerSpinnerValueFactory?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="850" prefWidth="600" style="-fx-background-color: #f7f7f7; -fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.PizzaOrderController">
-    <Label layoutX="100" layoutY="20" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Pizza Customization and Ordering Process" />
+<AnchorPane prefHeight="850" prefWidth="600" style="-fx-background-color: linear-gradient(to bottom, #ffcc99, #ffffff); -fx-padding: 20; -fx-border-color: #ff4500; -fx-border-width: 4px; -fx-border-radius: 10px; -fx-background-radius: 10px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.PizzaOrderController">
 
-    <Label layoutX="50" layoutY="60" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Pizza Customization" />
+    <Label layoutX="100" layoutY="20" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ff4500;" text="Pizza Customization and Ordering" />
 
-    <Label layoutX="50" layoutY="100" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Choose Crust:" />
-    <ComboBox fx:id="crustComboBox" layoutX="170.0" layoutY="100.0" prefWidth="200" promptText="Select Crust" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;" />
+    <Label layoutX="50" layoutY="60" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Customize Your Pizza" />
 
-    <Label layoutX="50" layoutY="150" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Choose Sauce:" />
-    <ComboBox fx:id="sauceComboBox" layoutX="170.0" layoutY="150.0" prefWidth="200" promptText="Select Sauce" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;" />
+    <Label layoutX="50" layoutY="100" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Choose Pizza:" />
+    <ComboBox fx:id="pizzaSelectionComboBox" layoutX="170.0" layoutY="100.0" prefWidth="250" promptText="Select Pizza" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="50" layoutY="200" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Choose Cheese:" />
-    <ComboBox fx:id="cheeseComboBox" layoutX="170.0" layoutY="200.0" prefWidth="200" promptText="Select Cheese" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;" />
+    <Label layoutX="50" layoutY="150" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Choose Crust:" />
+    <ComboBox fx:id="crustComboBox" layoutX="170.0" layoutY="150.0" prefWidth="250" promptText="Select Crust" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="50" layoutY="250" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Choose Toppings:" />
-    <VBox fx:id="toppingsVBox" layoutX="200" layoutY="250" spacing="5">
-    </VBox>
-    <Label layoutX="57.0" layoutY="429.0" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Name Your Custom Pizza:" />
-    <TextField fx:id="pizzaNameField" layoutX="244.0" layoutY="425.0" prefWidth="200" promptText="Enter pizza name" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;" />
+    <Label layoutX="50" layoutY="200" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Choose Sauce:" />
+    <ComboBox fx:id="sauceComboBox" layoutX="170.0" layoutY="200.0" prefWidth="250" promptText="Select Sauce" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="373.0" layoutY="255.0" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Quantity:" />
-    <Spinner fx:id="quantitySpinner" layoutX="443.0" layoutY="251.0" prefWidth="100" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;">
-        <valueFactory>
-            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="1" max="10" min="1" />
-        </valueFactory>
-    </Spinner>
+    <Label layoutX="50" layoutY="250" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Choose Cheese:" />
+    <ComboBox fx:id="cheeseComboBox" layoutX="180.0" layoutY="250.0" prefWidth="250" promptText="Select Cheese" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="50" layoutY="460" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Ordering Process" />
+    <Label layoutX="50" layoutY="300" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Choose Toppings:" />
+    <VBox fx:id="toppingsVBox" layoutX="230" layoutY="300" spacing="5" style="-fx-padding: 10;" />
 
-    <Label layoutX="50" layoutY="490" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Choose Delivery Option:" />
-    <RadioButton fx:id="pickupRadio" layoutX="235.0" layoutY="490.0" style="-fx-font-size: 14px;" text="Pickup" />
-    <RadioButton fx:id="deliveryRadio" layoutX="337.0" layoutY="490.0" style="-fx-font-size: 14px;" text="Delivery" />
+    <Label layoutX="50.0" layoutY="490.0" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Name Your Custom Pizza:" />
+    <TextField fx:id="pizzaNameField" layoutX="258.0" layoutY="488.0" prefHeight="28.0" prefWidth="239.0" promptText="Enter pizza name" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="50" layoutY="530" style="-fx-font-size: 16px; -fx-text-fill: #555;" text="Delivery Address:" />
-    <TextField fx:id="addressField" layoutX="181.0" layoutY="529.0" prefWidth="300" promptText="Enter delivery address" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 5;" />
+    <Label layoutX="468.0" layoutY="250.0" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="qty:" />
+    <TextField fx:id="qtyField" layoutX="505.0" layoutY="246.0" prefHeight="28.0" prefWidth="67.0" promptText="Enter qty" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Label layoutX="50" layoutY="570" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Review Your Order:" />
-    <TextArea fx:id="orderReviewTextArea" layoutX="210.0" layoutY="570.0" prefHeight="100" prefWidth="300" style="-fx-background-color: #f0f0f0; -fx-border-color: #ccc; -fx-border-radius: 4px; -fx-padding: 10;" wrapText="true" />
+    <Label layoutX="431.0" layoutY="201.0" style="-fx-font-size: 18px; -fx-text-fill: #333;" text="Address:" />
+    <TextField fx:id="adrressField" layoutX="505.0" layoutY="198.0" prefHeight="28.0" prefWidth="107.0" promptText="Enter Address:" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 5px;" />
 
-    <Button layoutX="250" onAction="#submitOrder" layoutY="690" prefHeight="38.0" prefWidth="140.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 20; -fx-border-radius: 5; -fx-cursor: hand;" text="Submit Order" />
+    <Button layoutX="510.0" layoutY="490.0" onAction="#favoritePizza" style="-fx-font-size: 14px; -fx-background-color: #ff4500; -fx-text-fill: white; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-cursor: hand;" text="❤ Favorite" />
+
+    <Label layoutX="50.0" layoutY="530.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333;" text="Order Summary" />
+
+    <TextArea fx:id="orderReviewTextArea" editable="false" layoutX="170.0" layoutY="570.0" prefHeight="150" prefWidth="400" style="-fx-background-color: #fff5e6; -fx-border-color: #ff4500; -fx-border-radius: 10px; -fx-font-size: 16px;" wrapText="true" />
+
+    <Button layoutX="250.0" layoutY="740.0" onAction="#reviewOrder" prefWidth="150" style="-fx-font-size: 16px; -fx-background-color: #ff8c42; -fx-text-fill: white; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-cursor: hand;" text="🔍 Review" />
+    <Button layoutX="420.0" layoutY="740.0" onAction="#submitOrder" prefWidth="150" style="-fx-font-size: 16px; -fx-background-color: #ff4500; -fx-text-fill: white; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-cursor: hand;" text="🛒 Submit" />
 </AnchorPane>

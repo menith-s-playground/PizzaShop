@@ -3,16 +3,23 @@ package lk.kingston.cs.pizzaShopApp.view_controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import lk.kingston.cs.pizzaShopApp.customization.*;
 import lk.kingston.cs.pizzaShopApp.model.PizzaOrder;
+import lk.kingston.cs.pizzaShopApp.customization.CheeseHandler;
+import lk.kingston.cs.pizzaShopApp.customization.CrustHandler;
+import lk.kingston.cs.pizzaShopApp.customization.CustomizationHandler;
+import lk.kingston.cs.pizzaShopApp.customization.SauceHandler;
 import lk.kingston.cs.pizzaShopApp.subject.OrderTracker;
+import lk.kingston.cs.pizzaShopApp.util.AppState;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class PizzaOrderController {
 
+    @FXML
+    public ComboBox<String> pizzaSelectionComboBox;
     @FXML
     public ComboBox<String> crustComboBox;
     @FXML
@@ -24,30 +31,35 @@ public class PizzaOrderController {
     @FXML
     private TextField pizzaNameField;
     @FXML
-    public Spinner<Integer> quantitySpinner;
-    @FXML
-    public RadioButton pickupRadio;
-    @FXML
-    public RadioButton deliveryRadio;
-    @FXML
-    public TextField addressField;
-    @FXML
     private TextArea orderReviewTextArea;
     @FXML
-    private Button submitOrderButton;
+    private TextField qtyField;
 
+    @FXML
+    private TextField adrressField;
+
+    private final String[] availablePizzas = {"Margherita", "Pepperoni", "BBQ Chicken", "Veggie Delight"};
     private final String[] crustOptions = {"Thin Crust", "Thick Crust", "Gluten-Free Crust"};
     private final String[] sauceOptions = {"Tomato Sauce", "BBQ Sauce", "Pesto Sauce"};
     private final String[] cheeseOptions = {"Mozzarella", "Cheddar", "Vegan Cheese"};
     private final String[] toppingOptions = {"Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon", "Extra Cheese"};
 
-    private final AtomicInteger orderIdGenerator = new AtomicInteger(1); // Auto-incrementing orderId
-    private final OrderTracker orderTracker = OrderTracker.getInstance(); // Singleton for managing orders
+    private final double[] crustPrices = {80.00, 100.00, 120.00};
+    private final double[] saucePrices = {50.50, 90.00, 200.50};
+    private final double[] cheesePrices = {100.00, 222.50, 322.00};
+    private final double toppingPrice = 112.00;
+    private final AtomicInteger orderIdGenerator = new AtomicInteger(1);
 
+
+    private final List<PizzaOrder> favoritePizzas = new ArrayList<>();
     private CustomizationHandler handlerChain;
+
+    private final OrderTracker orderTracker = OrderTracker.getInstance();
+
 
     @FXML
     public void initialize() {
+        pizzaSelectionComboBox.getItems().addAll(availablePizzas);
         crustComboBox.getItems().addAll(crustOptions);
         sauceComboBox.getItems().addAll(sauceOptions);
         cheeseComboBox.getItems().addAll(cheeseOptions);
@@ -57,66 +69,118 @@ public class PizzaOrderController {
             toppingsVBox.getChildren().add(checkBox);
         }
 
-        crustComboBox.setValue(crustOptions[0]);
-        sauceComboBox.setValue(sauceOptions[0]);
-        cheeseComboBox.setValue(cheeseOptions[0]);
-
-        quantitySpinner.getValueFactory().setValue(1);
-
         CustomizationHandler crustHandler = new CrustHandler();
         CustomizationHandler sauceHandler = new SauceHandler();
         CustomizationHandler cheeseHandler = new CheeseHandler();
-        CustomizationHandler deliveryHandler = new DeliveryHandler();
-
 
         crustHandler.setNext(sauceHandler);
         sauceHandler.setNext(cheeseHandler);
-        cheeseHandler.setNext(deliveryHandler);
 
         handlerChain = crustHandler;
 
+        pizzaSelectionComboBox.setOnAction(event -> pizzaNameField.setText(pizzaSelectionComboBox.getValue()));
     }
 
+    private boolean isFavorite = false;
+
     @FXML
-    private void updateOrderReview(MouseEvent event) {
-        PizzaOrder.Builder orderBuilder = new PizzaOrder.Builder();
-        handlerChain.handleCustomization(orderBuilder, this); // Process customization
-
-        PizzaOrder order = orderBuilder.build();
-
-        String orderReview = String.format("Pizza Name: %s\nCrust: %s\nSauce: %s\nCheese: %s\nToppings: %s\nQuantity: %d\nDelivery: %s%s",
-                order.getPizzaName(), order.getCrust(), order.getSauce(), order.getCheese(), order.getToppings(), order.getQuantity(), order.getDeliveryOption(), order.getDeliveryAddress());
-
-        orderReviewTextArea.setText(orderReview);
+    private void favoritePizza(ActionEvent event) {
+        isFavorite = true;
+        PizzaOrder order = buildPizzaOrder();
+        favoritePizzas.add(order);
+        showAlert("Success", "Pizza added to favorites.");
     }
 
+    PizzaOrder order;
     @FXML
-    private void submitOrder(ActionEvent event) {
+    private void reviewOrder(ActionEvent event) {
+        String orderId = "ORD" + orderIdGenerator.getAndIncrement();
+
+        double totalPrice = calculateTotalPrice();
+
+        order = new PizzaOrder.Builder()
+                .setOrderId(orderId)
+                .setPizzaName(pizzaNameField.getText())
+                .setCrust(crustComboBox.getValue())
+                .setSauce(sauceOptions[sauceComboBox.getSelectionModel().getSelectedIndex()])
+                .setCheese(cheeseOptions[cheeseComboBox.getSelectionModel().getSelectedIndex()])
+                .setQuantity(qtyField.getText().isEmpty() ? 1 : Integer.parseInt(qtyField.getText()))
+                .setDeliveryAddress(adrressField.getText())
+                .setToppings(getSelectedToppings())
+                .setTotalPrice(totalPrice)
+                .setFavorite(isFavorite)
+                .build();
+        AppState.getInstance().setOrderId(order.getOrderId());
+        AppState.getInstance().setToppings(order.getToppings());
+        AppState.getInstance().setAddress(order.getDeliveryAddress());
+        AppState.getInstance().setCrust(order.getCrust());
+        AppState.getInstance().setSauce(order.getSauce());
+        AppState.getInstance().setCheese(order.getCheese());
+        AppState.getInstance().setAmount(order.getTotalPrice());
+        AppState.getInstance().setQty(order.getQuantity());
+        AppState.getInstance().setOrderName(order.getPizzaName());
+        AppState.getInstance().setFavorite(order.isFavorite());
+        orderReviewTextArea.setText(order.toString());
+
+    }
+
+    private PizzaOrder buildPizzaOrder() {
+        PizzaOrder.Builder builder = new PizzaOrder.Builder();
+        handlerChain.handleCustomization(builder, this);
+
+        List<String> selectedToppings = new ArrayList<>();
+        for (var node : toppingsVBox.getChildren()) {
+            if (node instanceof CheckBox checkBox && checkBox.isSelected()) {
+                selectedToppings.add(checkBox.getText());
+            }
+        }
+
+        return builder.setPizzaName(pizzaNameField.getText())
+                .setToppings(selectedToppings)
+                .build();
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    public void submitOrder(ActionEvent actionEvent) {
         String orderDetails = orderReviewTextArea.getText();
 
         if (orderDetails.isEmpty()) {
             showAlert("Error", "Please complete the pizza customization and ordering process.");
             return;
         }
-
-        int orderId = orderIdGenerator.getAndIncrement();
-
-        PizzaOrder.Builder orderBuilder = new PizzaOrder.Builder();
-        handlerChain.handleCustomization(orderBuilder, this); // Process customization
-
-        PizzaOrder order = orderBuilder.setOrderId(orderId).build();
-
         orderTracker.addOrder(order);
 
-        System.out.println("Order Submitted: \n" + order);
-        showAlert("Success", "Your order has been submitted successfully!");
+        String successMessage = String.format("Your order has been submitted successfully! Order ID: %s\nTotal Price: Rs%.2f", order.getOrderId(), order.getTotalPrice());
+        showAlert("Success", successMessage);
+
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private double calculateTotalPrice() {
+        double total = crustPrices[crustComboBox.getSelectionModel().getSelectedIndex()]
+                + saucePrices[sauceComboBox.getSelectionModel().getSelectedIndex()]
+                + cheesePrices[cheeseComboBox.getSelectionModel().getSelectedIndex()];
+
+        int quantity = qtyField.getText().isEmpty() ? 1 : Integer.parseInt(qtyField.getText());
+        total += getSelectedToppings().size() * toppingPrice * quantity;
+
+        return total;
     }
+
+
+    private List<String> getSelectedToppings() {
+        List<String> selectedToppings = new ArrayList<>();
+        for (var node : toppingsVBox.getChildren()) {
+            if (node instanceof CheckBox checkBox && checkBox.isSelected()) {
+                selectedToppings.add(checkBox.getText());
+            }
+        }
+        return selectedToppings;
+    }
+
 }

@@ -35,6 +35,7 @@
             <Button fx:id="btnLoyaltyPoints" maxWidth="800.0" mnemonicParsing="false" onAction="#btnLoyaltyPointsOnAction" styleClass="modern-button" text="Loyalty Program" />
             <Button fx:id="btnFeedback" maxWidth="800.0" mnemonicParsing="false" onAction="#btnFeedbackOnAction" styleClass="modern-button" text="Provide Feedback" />
             <Button fx:id="btnUserProfile" maxWidth="800.0" mnemonicParsing="false" onAction="#btnUserProfileOnAction" styleClass="modern-button" text="User Profile" />
+            <Button fx:id="btnViewFavorites" maxWidth="800.0" mnemonicParsing="false" onAction="#btnViewFavoritesOnAction" styleClass="modern-button" text="Favorite Pizza" />
          </children>
       </VBox>
    </children>
