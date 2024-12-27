@@ -17,6 +17,9 @@ public class SignInController {
     private Button btnSignIn;
 
     @FXML
+    private Button btnSingUp;
+
+    @FXML
     private TextField txtUsername;
 
     @FXML

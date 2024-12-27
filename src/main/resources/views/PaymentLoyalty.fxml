@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ProgressBar?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.PaymentLoyaltyController" spacing="25" alignment="TOP_CENTER" style="-fx-padding: 25; -fx-background-color: #f4f4f4; -fx-border-radius: 10; -fx-background-radius: 10;">
+
+    <HBox spacing="15" alignment="CENTER">
+        <Label text="Payment and Loyalty Program" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+    </HBox>
+
+    <VBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20; -fx-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+        <Label text="Payment Method" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Credit Card" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+            <TextField promptText="Enter card number" style="-fx-pref-width: 250px; -fx-padding: 10; -fx-background-color: #f9f9f9; -fx-border-radius: 5; -fx-border-color: #ddd;" />
+        </HBox>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Digital Wallet" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+            <TextField promptText="Enter wallet ID" style="-fx-pref-width: 250px; -fx-padding: 10; -fx-background-color: #f9f9f9; -fx-border-radius: 5; -fx-border-color: #ddd;" />
+        </HBox>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Amount: $20.00" style="-fx-font-size: 18px; -fx-text-fill: #333;" />
+        </HBox>
+
+        <HBox spacing="20" alignment="CENTER_LEFT">
+            <Button text="Process Payment" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" onAction="#processPayment" />
+            <Button text="Cancel Payment" style="-fx-background-color: #FF6347; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" onAction="#cancelPayment" />
+        </HBox>
+    </VBox>
+
+    <Separator style="-fx-background-color: #ddd;" />
+
+    <VBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20; -fx-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+        <Label text="Loyalty Program" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Loyalty Points: 120" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+        </HBox>
+
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Earned Loyalty Points:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+            <ProgressBar fx:id="pointsProgressBar" progress="0.75" style="-fx-pref-width: 300; -fx-background-radius: 5;" />
+        </VBox>
+
+        <VBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="Available Rewards:" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+            <Label text="Free Pizza after 200 points!" style="-fx-font-size: 14px; -fx-text-fill: #0078D4;" />
+        </VBox>
+
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button text="Claim Reward" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" onAction="#claimReward" />
+            <Button text="View Loyalty History" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" onAction="#viewLoyaltyHistory" />
+        </HBox>
+    </VBox>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Label text="Thank you for being a loyal customer!" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+    </HBox>
+</VBox>

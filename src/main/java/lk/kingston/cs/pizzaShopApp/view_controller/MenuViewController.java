@@ -2,9 +2,8 @@ package lk.kingston.cs.pizzaShopApp.view_controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 
 public class MenuViewController {
 
@@ -12,61 +11,52 @@ public class MenuViewController {
     private ImageView bbqChickenImageView;
 
     @FXML
-    private Button btnBBQFav;
+    private Button btnAddBBQChickenButton;
 
     @FXML
-    private Button btnCalculateEstimate;
+    private Button btnAddMargheritaButton;
+
+    @FXML
+    private Button btnAddPepperoniButton;
+
+    @FXML
+    private Button btnBBQFav;
 
     @FXML
     private Button btnMargheritFav;
 
     @FXML
+    private Button btnMoreCheese;
+
+    @FXML
     private Button btnPepperoniFav;
 
     @FXML
-    private Button btnReviewOrder;
-
-    @FXML
-    private ComboBox<?> cheeseComboBox;
-
-    @FXML
-    private ComboBox<?> crustComboBox;
-
-    @FXML
-    private HBox deliveryAddressBox;
-
-    @FXML
-    private TextField deliveryAddressField;
-
-    @FXML
-    private HBox deliveryEstimateBox;
-
-    @FXML
-    private Label deliveryEstimateLabel;
-
-    @FXML
-    private RadioButton deliveryRadioButton;
+    private Button btnmoreChili;
 
     @FXML
     private ImageView margheritaImageView;
 
     @FXML
-    private Label orderReviewLabel;
-
-    @FXML
     private ImageView pepperoniImageView;
 
     @FXML
-    private RadioButton pickupRadioButton;
+    private Button viewCartButton;
 
     @FXML
-    private TextField quantityTextField;
+    void btnAddBBQChickenButtonOnAction(ActionEvent event) {
+
+    }
 
     @FXML
-    private ComboBox<?> sauceComboBox;
+    void btnAddMargheritaButtonOnAction(ActionEvent event) {
+
+    }
 
     @FXML
-    private ComboBox<?> toppingComboBox;
+    void btnAddPepperoniButtonOnAction(ActionEvent event) {
+
+    }
 
     @FXML
     void btnBBQFavOnAction(ActionEvent event) {
@@ -79,17 +69,22 @@ public class MenuViewController {
     }
 
     @FXML
+    void btnMoreCheeseOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
     void btnPepperoniFavOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void calculateDeliveryEstimateOnAction(ActionEvent event) {
+    void btnmoreChiliOnACtion(ActionEvent event) {
 
     }
 
     @FXML
-    void reviewOrderAction(ActionEvent event) {
+    void viewCartButtonOnAction(ActionEvent event) {
 
     }
 

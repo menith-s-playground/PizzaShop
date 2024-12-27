@@ -38,12 +38,48 @@ public class MainViewController {
 
     @FXML
     void btnFeedbackOnAction(ActionEvent event) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("New Order");
+        newOrderStage.centerOnScreen();
 
+        Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/FeedbackAndRatings.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+        newOrderStage.show();
     }
 
     @FXML
     void btnLoyaltyPointsOnAction(ActionEvent event) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("New Order");
+        newOrderStage.centerOnScreen();
 
+        Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/PaymentLoyalty.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+        newOrderStage.show();
     }
 
     @FXML
@@ -53,24 +89,20 @@ public class MainViewController {
         newOrderStage.setTitle("New Order");
         newOrderStage.centerOnScreen();
 
-        // Set the owner of the new stage
         Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
         newOrderStage.initOwner(currentStage);
-        newOrderStage.initModality(Modality.WINDOW_MODAL); // Ensures focus remains on the new window
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
 
         try {
-            // Load the FXML file
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/MenuView.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             newOrderStage.setScene(scene);
         } catch (IOException e) {
-
             e.printStackTrace();
             showErrorDialog("Failed to load the New Order view. Please try again.");
             return;
         }
 
-        // Show the stage
         newOrderStage.show();
     }
 
@@ -85,13 +117,50 @@ public class MainViewController {
 
     @FXML
     void btnPromotionsOnAction(ActionEvent event) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("New Order");
+        newOrderStage.centerOnScreen();
 
+        Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
 
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/SeasonalSpecials.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+
+        newOrderStage.show();
     }
 
     @FXML
     void btnTrackOrderOnAction(ActionEvent event) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("New Order");
+        newOrderStage.centerOnScreen();
 
+        Window currentStage = ((Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/OrderTracking.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+
+        newOrderStage.show();
     }
 
     @FXML
@@ -103,5 +172,25 @@ public class MainViewController {
     }
 
     public void btnUserProfileOnAction(ActionEvent actionEvent) {
+        Stage newOrderStage = new Stage();
+        newOrderStage.setResizable(false);
+        newOrderStage.setTitle("New Order");
+        newOrderStage.centerOnScreen();
+
+        Window currentStage = ((Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow());
+        newOrderStage.initOwner(currentStage);
+        newOrderStage.initModality(Modality.WINDOW_MODAL);
+
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/views/Profile.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            newOrderStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorDialog("Failed to load the New Order view. Please try again.");
+            return;
+        }
+
+        newOrderStage.show();
     }
 }

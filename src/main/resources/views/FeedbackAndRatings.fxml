@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Pos?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.FeedbackAndRatingsController" spacing="25" alignment="TOP_CENTER" style="-fx-padding: 25; -fx-background-color: #f9f9f9; -fx-border-radius: 10; -fx-background-radius: 10;">
+
+    <!-- Header Section -->
+    <HBox spacing="15" alignment="CENTER">
+        <Label text="Feedback and Ratings" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+    </HBox>
+
+    <!-- Feedback Section -->
+    <VBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20; -fx-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+        <Label text="Rate your Pizza" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+        <!-- Rating Slider -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Rating (1 to 5):" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+            <Slider fx:id="ratingSlider" min="1" max="5" value="3" blockIncrement="1" showTickMarks="true" showTickLabels="true" style="-fx-pref-width: 300px;" />
+        </HBox>
+
+        <!-- Feedback Text Area -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Your Feedback:" style="-fx-font-size: 16px; -fx-text-fill: #666;" />
+            <TextArea fx:id="feedbackTextArea" promptText="Enter your feedback" wrapText="true" style="-fx-pref-width: 350px; -fx-pref-height: 150px; -fx-background-color: #f9f9f9; -fx-border-radius: 5; -fx-border-color: #ddd;" />
+        </HBox>
+
+        <!-- Submit Button -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button fx:id="submitFeedbackButton" text="Submit Feedback" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" />
+        </HBox>
+
+        <!-- Undo Button -->
+        <HBox spacing="15" alignment="CENTER_LEFT">
+            <Button fx:id="undoFeedbackButton" text="Undo Feedback" style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 25; -fx-border-radius: 25; -fx-cursor: hand;" />
+        </HBox>
+    </VBox>
+
+    <!-- Recent Feedback Section -->
+    <VBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 20; -fx-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);">
+        <Label text="Recent Feedback" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #333;" />
+
+        <GridPane fx:id="feedbackGrid" hgap="10" vgap="10" style="-fx-background-color: #fff; -fx-border-radius: 8; -fx-background-radius: 8;">
+        </GridPane>
+    </VBox>
+
+</VBox>
