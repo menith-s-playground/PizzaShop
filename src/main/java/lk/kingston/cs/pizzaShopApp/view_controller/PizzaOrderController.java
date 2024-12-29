@@ -2,8 +2,14 @@ package lk.kingston.cs.pizzaShopApp.view_controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import lk.kingston.cs.pizzaShopApp.model.PizzaOrder;
 import lk.kingston.cs.pizzaShopApp.customization.CheeseHandler;
 import lk.kingston.cs.pizzaShopApp.customization.CrustHandler;
@@ -12,6 +18,7 @@ import lk.kingston.cs.pizzaShopApp.customization.SauceHandler;
 import lk.kingston.cs.pizzaShopApp.subject.OrderTracker;
 import lk.kingston.cs.pizzaShopApp.util.AppState;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -38,14 +45,14 @@ public class PizzaOrderController {
     @FXML
     private TextField adrressField;
 
-    private final String[] availablePizzas = {"Margherita", "Pepperoni", "BBQ Chicken", "Veggie Delight"};
-    private final String[] crustOptions = {"Thin Crust", "Thick Crust", "Gluten-Free Crust"};
-    private final String[] sauceOptions = {"Tomato Sauce", "BBQ Sauce", "Pesto Sauce"};
-    private final String[] cheeseOptions = {"Mozzarella", "Cheddar", "Vegan Cheese"};
+    private final String[] availablePizzas = {"Margherita M", "Margherita L", "Pepperoni M", "Pepperoni L", "BBQ Chicken M","BBQ Chicken L", "Veggie Delight M", "Veggie Delight L"};
+    private final String[] crustOptions = {"Thin Crust = LKR 80", "Thick Crust = LKR 100", "Gluten-Free Crust = LKR 120"};
+    private final String[] sauceOptions = {"Tomato Sauce =LKR 50", "BBQ Sauce = LKR 90", "Pesto Sauce = LKR 200"};
+    private final String[] cheeseOptions = {"Mozzarella =LKR 100", "Cheddar =LKR 222.50", "Vegan Cheese =LKR 322.00"};
     private final String[] toppingOptions = {"Pepperoni", "Mushrooms", "Onions", "Sausage", "Bacon", "Extra Cheese"};
 
     private final double[] crustPrices = {80.00, 100.00, 120.00};
-    private final double[] saucePrices = {50.50, 90.00, 200.50};
+    private final double[] saucePrices = {50.00, 90.00, 200.00};
     private final double[] cheesePrices = {100.00, 222.50, 322.00};
     private final double toppingPrice = 112.00;
     private final AtomicInteger orderIdGenerator = new AtomicInteger(1);
@@ -182,5 +189,19 @@ public class PizzaOrderController {
         }
         return selectedToppings;
     }
+
+    @FXML
+    public void btnpaymentOnAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PaymentOptions.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
