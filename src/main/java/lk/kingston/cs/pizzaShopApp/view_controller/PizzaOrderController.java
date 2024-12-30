@@ -215,10 +215,12 @@ public class PizzaOrderController {
     public void btnpaymentOnAction(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/PaymentOptions.fxml"));
+            PaymentOptionController controller = loader.getController();
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
+            controller.setPaymentAmount(calculateTotalPrice());
         } catch (IOException e) {
             e.printStackTrace();
         }

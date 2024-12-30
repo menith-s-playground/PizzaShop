@@ -3,12 +3,13 @@ package lk.kingston.cs.pizzaShopApp.view_controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+import lk.kingston.cs.pizzaShopApp.payment.CreditCardPayment;
+import lk.kingston.cs.pizzaShopApp.payment.PaymentStrategy;
+import lk.kingston.cs.pizzaShopApp.payment.PaypalPayment;
 
 import java.io.IOException;
 
@@ -25,12 +26,25 @@ public class PaymentController {
 
     @FXML
     private TextField pizzaNameField;
+    @FXML
+    private RadioButton RdCard;
 
+    @FXML
+    private RadioButton RdPaypal;
+
+    @FXML
+    private Button btnCompletePayment;
+
+    @FXML
+    private ToggleGroup payment;
     private Stage paymentStage;
 
     public  int qty;
+    private double total ;
 
     public void setPaymentAmount(double amount) {
+
+        total = amount;
         paymentAmountField.setText(String.format("Rs%.2f", amount));
     }
 
@@ -46,13 +60,20 @@ public class PaymentController {
 
     @FXML
     private void submitPayment() {
+        PaymentStrategy pay ;
+        if (RdCard.isSelected())
+            pay = new CreditCardPayment();
+        else
+            pay = new PaypalPayment();
+
+        String message = pay.processPayment(total);
 
         System.out.println("Payment Submitted!");
 
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Payment Confirmation");
         alert.setHeaderText(null);
-        alert.setContentText("Payment has been successfully processed!");
+        alert.setContentText(message);
 
         alert.showAndWait();
 
@@ -62,6 +83,7 @@ public class PaymentController {
         openOrderTrackingWindow();
 
     }
+
 
     public void openOrderTrackingWindow() {
         try {

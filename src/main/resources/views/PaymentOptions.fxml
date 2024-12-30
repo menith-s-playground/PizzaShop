@@ -2,44 +2,50 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff8e1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.kingston.cs.pizzaShopApp.view_controller.PaymentOptionController">
     <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="700.0" prefWidth="780.0" spacing="20.0">
 
         <!-- Title Section -->
-        <Label text="🍕 Payment Gateway 🍕" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #d84315;" />
+        <Label style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #d84315;" text="🍕 Payment Gateway 🍕" />
 
         <HBox alignment="CENTER" spacing="25.0">
 
             <!-- Payment Form Section -->
-            <VBox spacing="15.0" style="-fx-border-color: #ffab91; -fx-border-radius: 10; -fx-border-width: 2; -fx-padding: 20; -fx-background-color: #ffffff; -fx-background-radius: 10;" prefWidth="400.0">
+            <VBox prefWidth="400.0" spacing="15.0" style="-fx-border-color: #ffab91; -fx-border-radius: 10; -fx-border-width: 2; -fx-padding: 20; -fx-background-color: #ffffff; -fx-background-radius: 10;">
                 <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Payment Details" />
 
-                <Label text="Name on Card" style="-fx-font-size: 14px;" />
+                <Label style="-fx-font-size: 14px;" text="Name on Card" />
                 <TextField promptText="Enter your name on the card" />
 
-                <Label text="Card Number" style="-fx-font-size: 14px;" />
+                <Label style="-fx-font-size: 14px;" text="Card Number" />
                 <TextField promptText="1234 5678 9012 3456" />
 
-                <Label text="Expiration Date (MM/YY)" style="-fx-font-size: 14px;" />
+                <Label style="-fx-font-size: 14px;" text="Expiration Date (MM/YY)" />
                 <HBox spacing="10.0">
                     <TextField prefWidth="50.0" promptText="MM" />
                     <TextField prefWidth="50.0" promptText="YY" />
                 </HBox>
 
-                <Label text="CVV" style="-fx-font-size: 14px;" />
+                <Label style="-fx-font-size: 14px;" text="CVV" />
                 <TextField prefWidth="80.0" promptText="123" />
 
-                <Label text="Payment Method" style="-fx-font-size: 14px;" />
+                <Label style="-fx-font-size: 14px;" text="Payment Method" />
                 <HBox spacing="15.0">
-                    <ToggleButton fx:id="toggleCard" selected="true" text="💳 Card" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-cursor: hand; -fx-background-radius: 15; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, #2196F3, 10, 0.5, 0, 0); -fx-border-color: #1976D2; -fx-border-radius: 15;" />
-                    <ToggleButton fx:id="toggleWallet" text="📱 Wallet" style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-cursor: hand; -fx-background-radius: 15; -fx-padding: 10px; -fx-effect: dropshadow(gaussian, #2196F3, 10, 0.5, 0, 0); -fx-border-color: #1976D2; -fx-border-radius: 15;" />
+               <children>
+                  <RadioButton fx:id="RdCard" mnemonicParsing="false" selected="true" text="Card">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="payment" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="RdPaypal" mnemonicParsing="false" text="Paypal" toggleGroup="$payment" />
+               </children>
                 </HBox>
 
                 <Button fx:id="btnCompletePayment" onAction="#btnCompletePayment" style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10;" text="Complete Payment" />

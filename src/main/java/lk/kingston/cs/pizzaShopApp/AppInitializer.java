@@ -28,7 +28,7 @@ public class AppInitializer extends Application {
         PauseTransition pause = new PauseTransition(Duration.seconds(5));
         pause.setOnFinished(event -> {
             try {
-                FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/MainView.fxml"));
+                FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("/views/MenuView.fxml"));
                 primaryStage.setScene(new Scene(mainLoader.load()));
                 primaryStage.setTitle("Pizza Shop");
                 primaryStage.centerOnScreen();

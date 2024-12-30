@@ -3,7 +3,7 @@ package lk.kingston.cs.pizzaShopApp.payment;
 public class CreditCardPayment implements PaymentStrategy {
 
     @Override
-    public void processPayment(double amount) {
-        System.out.println("Processing Credit Card payment of amount: $" + amount);
+    public String processPayment(double amount) {
+        return ("Processing Credit Card payment of amount: $" + amount);
     }
 }
