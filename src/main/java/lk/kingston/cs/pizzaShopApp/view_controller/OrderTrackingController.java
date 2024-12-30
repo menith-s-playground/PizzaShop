@@ -1,6 +1,7 @@
 package lk.kingston.cs.pizzaShopApp.view_controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -35,8 +36,6 @@ public class OrderTrackingController implements OrderObserver {
 
     @FXML
     public void initialize() {
-//        updatePizzaNameLabel();
-//        updateOrderIdLabel();
         orderTracker.addObserver(this);
         orderTracker.updateOrder("Preparing your pizza...", 0.3, "Your pizza is being prepared!");
     }
@@ -52,23 +51,29 @@ public class OrderTrackingController implements OrderObserver {
         String orderIdText = searchOrderIdTextField.getText();
         try {
             OrderId = orderIdText;
-            String Id = AppState.getInstance().getOrderId();
+            String id = AppState.getInstance().getOrderId();
 
-            if (Id != null && Id.equals(orderIdText)) {
-                pizzaNameLabel.setText("Pizza Name: " + AppState.getInstance().getOrderName());
+            if (id != null && id.equals(orderIdText)) {
+                boolean isDelivery = AppState.getInstance().isDelivery();
 
-                int qty = AppState.getInstance().getQty();
-                int baseTime = 25;
-                int additionalTimePerPizza = 5;
-                int estimatedTime = baseTime + (qty - 1) * additionalTimePerPizza;
+                if (isDelivery) {
+                    pizzaNameLabel.setText("Pizza Name: " + AppState.getInstance().getOrderName());
 
-                deliveryTimeLabel.setText("Delivery Time: " + estimatedTime + " minutes");
-                deliveryAddressLabel.setText("Delivery Address: " + AppState.getInstance().getAddress());
-                qtyLabel.setText("Quantity: " + qty);
+                    int qty = AppState.getInstance().getQty();
+                    int baseTime = 25;
+                    int additionalTimePerPizza = 5;
+                    int estimatedTime = baseTime + (qty - 1) * additionalTimePerPizza;
+
+                    deliveryTimeLabel.setText("Delivery Time: " + estimatedTime + " minutes");
+                    deliveryAddressLabel.setText("Delivery Address: " + AppState.getInstance().getAddress());
+                    qtyLabel.setText("Quantity: " + qty);
+                } else {
+                    showAlert("Error", "This order is for pickup only and cannot be tracked.");
+                    clearOrderDetails();
+                }
             } else {
                 pizzaNameLabel.setText("No order found for the given Order ID.");
-                deliveryTimeLabel.setText("");
-                deliveryAddressLabel.setText("");
+                clearOrderDetails();
             }
             System.out.println("Searching for Order ID: " + OrderId);
         } catch (NumberFormatException e) {
@@ -76,7 +81,19 @@ public class OrderTrackingController implements OrderObserver {
         }
     }
 
+    private void clearOrderDetails() {
+        pizzaNameLabel.setText("");
+        deliveryTimeLabel.setText("");
+        deliveryAddressLabel.setText("");
+        qtyLabel.setText("");
+    }
 
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     private void setOrderDetails(String orderId, String pizzaName, int qty) {
         this.OrderId = orderId;
         this.pizzaName = pizzaName;
@@ -88,8 +105,8 @@ public class OrderTrackingController implements OrderObserver {
     }
 
     private void updateDeliveryTime(int qty) {
-        int baseTime = 25; // base delivery time in minutes
-        int additionalTimePerPizza = 5; // additional time per pizza
+        int baseTime = 25;
+        int additionalTimePerPizza = 5;
         int estimatedTime = baseTime + (qty - 1) * additionalTimePerPizza;
         deliveryTimeLabel.setText("Estimated Delivery Time: " + estimatedTime + " minutes");
         deliveryAddressLabel.setText("Delivery Address: 123 Main St, Springfield");

@@ -13,8 +13,9 @@ public class AppState {
     private String crust;
     private String sauce;
     private String cheese;
-
+    private boolean isDelivery;
     private boolean isFavorite;
+    private boolean isPayed;
 
     public boolean isFavorite() {
         return isFavorite;
@@ -84,7 +85,6 @@ public class AppState {
         return orderName;
     }
 
-
     public int getQty() {
         return qty;
     }
@@ -93,6 +93,12 @@ public class AppState {
         this.qty = qty;
     }
 
+    public boolean isDelivery() {
+        return isDelivery;
+    }
+    public void setDelivery(boolean delivery) {
+        isDelivery = delivery;
+    }
     public double getAmount() {
         return amount;
     }
@@ -103,5 +109,13 @@ public class AppState {
 
     public void setOrderName(String orderName) {
         this.orderName = orderName;
+    }
+
+    public boolean isPayed() {
+        return isPayed;
+    }
+
+    public void setPayed(boolean payed) {
+        isPayed = payed;
     }
 }

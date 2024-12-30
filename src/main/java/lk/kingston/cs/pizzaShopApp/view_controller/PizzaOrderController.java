@@ -28,6 +28,14 @@ public class PizzaOrderController {
     @FXML
     public ComboBox<String> pizzaSelectionComboBox;
     @FXML
+    private RadioButton deliveryRadioButton;
+
+    @FXML
+    private ToggleGroup deliveryPickupToggleGroup;
+
+    @FXML
+    private RadioButton pickupRadioButton;
+    @FXML
     public ComboBox<String> crustComboBox;
     @FXML
     public ComboBox<String> sauceComboBox;
@@ -44,6 +52,7 @@ public class PizzaOrderController {
 
     @FXML
     private TextField adrressField;
+
 
     private final String[] availablePizzas = {"Margherita M", "Margherita L", "Pepperoni M", "Pepperoni L", "BBQ Chicken M","BBQ Chicken L", "Veggie Delight M", "Veggie Delight L"};
     private final String[] crustOptions = {"Thin Crust = LKR 80", "Thick Crust = LKR 100", "Gluten-Free Crust = LKR 120"};
@@ -101,6 +110,7 @@ public class PizzaOrderController {
     PizzaOrder order;
     @FXML
     private void reviewOrder(ActionEvent event) {
+        boolean isDelivery = deliveryRadioButton.isSelected();
         String orderId = "ORD" + orderIdGenerator.getAndIncrement();
 
         double totalPrice = calculateTotalPrice();
@@ -116,6 +126,7 @@ public class PizzaOrderController {
                 .setToppings(getSelectedToppings())
                 .setTotalPrice(totalPrice)
                 .setFavorite(isFavorite)
+                .setDelivery(isDelivery)
                 .build();
         AppState.getInstance().setOrderId(order.getOrderId());
         AppState.getInstance().setToppings(order.getToppings());
@@ -127,6 +138,7 @@ public class PizzaOrderController {
         AppState.getInstance().setQty(order.getQuantity());
         AppState.getInstance().setOrderName(order.getPizzaName());
         AppState.getInstance().setFavorite(order.isFavorite());
+        AppState.getInstance().setDelivery(order.isDelivery());
         orderReviewTextArea.setText(order.toString());
 
     }
@@ -155,18 +167,27 @@ public class PizzaOrderController {
     }
 
     public void submitOrder(ActionEvent actionEvent) {
-        String orderDetails = orderReviewTextArea.getText();
-
-        if (orderDetails.isEmpty()) {
-            showAlert("Error", "Please complete the pizza customization and ordering process.");
+        if (deliveryPickupToggleGroup.getSelectedToggle() == null) {
+            showAlert("Error", "Please select either Delivery or Pickup.");
             return;
         }
+
+        if (order == null) {
+            reviewOrder(new ActionEvent());
+        }
+
+        if (order == null) {
+            showAlert("Error", "Please complete the pizza customization process.");
+            return;
+        }
+
         orderTracker.addOrder(order);
 
         String successMessage = String.format("Your order has been submitted successfully! Order ID: %s\nTotal Price: Rs%.2f", order.getOrderId(), order.getTotalPrice());
         showAlert("Success", successMessage);
-
     }
+
+
 
     private double calculateTotalPrice() {
         double total = crustPrices[crustComboBox.getSelectionModel().getSelectedIndex()]
@@ -202,6 +223,4 @@ public class PizzaOrderController {
             e.printStackTrace();
         }
     }
-
-
 }

@@ -18,33 +18,56 @@ public class PaymentLoyaltyController {
     private Label loyaltyPointsLabel;
     @FXML
     private ProgressBar pointsProgressBar;
-
     @FXML
     private TextField orderIdTextField;
-
     @FXML
     private Label pizzaNameLabel;
     @FXML
     private Label amount;
     @FXML
     private Label quntity;
+
     private PaymentStrategy paymentStrategy;
+    private AppState appState;
 
     public PaymentLoyaltyController() {
-        this.paymentStrategy = new CreditCardPayment();
+        this.paymentStrategy = new CreditCardPayment();  // Default payment strategy
     }
 
     @FXML
     public void initialize() {
-        System.out.println("Initializing OrderTrackingController...");
-        AppState appState = AppState.getInstance();
+        appState = AppState.getInstance();
+        System.out.println("Initializing PaymentLoyaltyController...");
+
+        // Check if payment has already been made and update loyalty points
+        if (appState.isPayed()) {
+            // Add one point to loyalty points
+            updateLoyaltyPoints(100 + 1);
+        }
+
+        // Show order details if an order exists
+        String orderId = appState.getOrderId();
+        if (orderId != null) {
+            pizzaNameLabel.setText("Pizza Name: " + appState.getOrderName());
+            amount.setText("Amount: " + appState.getAmount());
+            quntity.setText("Quantity: " + appState.getQty());
+        } else {
+            pizzaNameLabel.setText("No order found for the given Order ID.");
+        }
+
+        loyaltyPointsLabel.setText("Loyalty Points: " + 100);
+        pointsProgressBar.setProgress((double) 100 / 200);
     }
+
     @FXML
     private void processPayment() {
         double amount = 50.0;
         System.out.println("Processing payment...");
         paymentStrategy.processPayment(amount);
-        updateLoyaltyPoints(120);
+
+        if (appState.isPayed()) {
+            updateLoyaltyPoints(100 + 1);
+        }
     }
 
     @FXML
@@ -54,7 +77,8 @@ public class PaymentLoyaltyController {
 
     @FXML
     private void claimReward() {
-        System.out.println("Claiming reward... Free pizza!");
+         showErrorMessage("You need at least 200 points to claim a free pizza.");
+
     }
 
     @FXML
@@ -63,6 +87,7 @@ public class PaymentLoyaltyController {
     }
 
     private void updateLoyaltyPoints(int points) {
+//        appState.setLoyaltyPoints(points);
         loyaltyPointsLabel.setText("Loyalty Points: " + points);
         pointsProgressBar.setProgress((double) points / 200);
     }
@@ -79,13 +104,13 @@ public class PaymentLoyaltyController {
 
         if (!orderIdText.isEmpty()) {
             try {
-                String orderId =orderIdText;
+                String orderId = orderIdText;
+                String storedOrderId = appState.getOrderId();
 
-                String Id = AppState.getInstance().getOrderId();
-                if (Id != null) {
-                    pizzaNameLabel.setText("Pizza Name: " + AppState.getInstance().getOrderName());
-                    amount.setText("Amount: " + AppState.getInstance().getAmount());
-                    quntity.setText("Quantity: " + AppState.getInstance().getQty());
+                if (storedOrderId != null && storedOrderId.equals(orderId)) {
+                    pizzaNameLabel.setText("Pizza Name: " + appState.getOrderName());
+                    amount.setText("Amount: " + appState.getAmount());
+                    quntity.setText("Quantity: " + appState.getQty());
                 } else {
                     pizzaNameLabel.setText("No order found for the given Order ID.");
                 }
@@ -96,22 +121,25 @@ public class PaymentLoyaltyController {
             pizzaNameLabel.setText("Please enter an Order ID.");
         }
     }
+
     public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;
     }
 
-    @FXML
-    private void choosePaymentPackage() {
-                showSuccessMessage();
+    private void showSuccessMessage(String message) {
+        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+        successAlert.setTitle("Success");
+        successAlert.setHeaderText("Success!");
+        successAlert.setContentText(message);
+        successAlert.showAndWait();
     }
 
-    private void showSuccessMessage() {
-        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-        successAlert.setTitle("Payment Success");
-        successAlert.setHeaderText("Payment Successful!");
-        successAlert.setContentText("Your payment has been successfully processed. Thank you for your purchase.");
-
-        successAlert.showAndWait();
+    private void showErrorMessage(String message) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("Error");
+        errorAlert.setHeaderText("Error!");
+        errorAlert.setContentText(message);
+        errorAlert.showAndWait();
     }
 
 }
